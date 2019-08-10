@@ -26,4 +26,20 @@ var sumOrder = orders.reduce(function(x, y) {
 }, 0);
 console.log(sumOrder);
 
+/**
+ * reduce có init
+ * 
+ * arr.reduce(function(item1, item2) {
+ * // caculation   
+ * return x;
+ * }, init);
+ * 
+ */
+var items = [ 'Tom', 'Bill', 'Kim'];
+// use reduce to make this result
+// '<Tom><Bill><Kim>'
 
+var allNames = items.reduce(function(accumulator, currentValue) {
+   return accumulator.concat(currentValue);
+},[]);
+console.log(allNames);
