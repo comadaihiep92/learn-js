@@ -12,15 +12,17 @@
   <body>
     <div class="row">
         <div class="col form-group">
-            <label for="genderFilter">Gender</label>
-            <select class="form-control" id="genderFilter">
+            <label for="genderFilter">Category</label>
+            <select class="form-control" id="categoryFilter">
                 <option value="null">All</option>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
+                <option value="Electronic goods">Electronic goods</option>
+                <option value="Smart goods">Smart goods</option>
+                <option value="TV goods">TV goods</option>
+                <option value="Fan goods">Fan goods</option>
             </select>
         </div>
     </div>
-    <ul class="list-group" id="userList">
+    <ul class="list-group" id="productList">
         <!-- <li class="list-group-item">Tom</li>
         <li class="list-group-item">Tom</li>
         <li class="list-group-item">Tom</li>
@@ -28,27 +30,34 @@
     </ul>
       
     <script>
-        var users = [
-            { name: 'Tom', gender: 'male' },
-            { name: 'Maria', gender: 'female' },
-            { name: 'Jason', gender: 'male' },
-            { name: 'Sora', gender: 'female' },
-            { name: 'Tèo', gender: 'male' },
+        // Product Catalog ->
+        var products = [
+            { name: 'A', unitPrice: 100, quantity: 2, category: 'Electronic goods'},
+            { name: 'B', unitPrice: 10, quantity: 5, category: 'TV goods'},
+            { name: 'C', unitPrice: 20, quantity: 10, category: 'Smart goods'},
+            { name: 'D', unitPrice: 30, quantity: 20, category: 'Fan goods'}
         ];
+
+        // 1. Filter các sản phẩm nằm trong 1 category nào đó
+        // 2. Tính tổng số tiền hàng còn trong kho
+        // 3. Chọn ra các sản phẩm có tiền hàng tồn lớn (tổng trên 500)
         
-        var userList = $('#userList');
-        var genderFilter = $('#genderFilter');
+        var productList = $('#productList');
+        var categoryFilter = $('#categoryFilter');
 
-        render(userList, users);
+        render(productList, products);
 
-        genderFilter.on('change', function() {
-            var selectedGender = this.value; // male or female
+        categoryFilter.on('change', function() {
+            var selectedCategory = this.value; // male or female
             // write code here
-            var filteredUsers = users.filter(function(user) {
-                return user.gender === selectedGender;
+            var filteredCategory = products.filter(function(product) {
+                return product.category === selectedCategory;
             });
-            render(userList,filteredUsers);
+            console.log(filteredCategory);
+            render(productList, filteredCategory);
         });
+
+
     
         function render(container, items) {
             // write code here  
@@ -66,8 +75,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   </body>
 </html>
-
-<!-- Product Catalog ->
+<!-- 
+Product Catalog ->
 var products = [
   { name: 'A', unitPrice: 100, quantity: 2, category: 'Electronic goods'},
   { name: 'B', unitPrice: 10, quantity: 5, category: 'TV goods'},
